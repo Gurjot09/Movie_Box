@@ -33,7 +33,7 @@ class OtherServiceCall
   def movie_create(title,image,genre,plot,rating,web,cast)
     @m = Movie.new
     @m.title = title
-    @m.remote_image_url = image
+    @m.image_url = image
     @m.genre = genre
     @m.plot =plot
     @m.rating = rating
