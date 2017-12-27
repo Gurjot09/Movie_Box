@@ -1,0 +1,242 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <img style="margin:0 auto ; height:400px; width:500px" alt="Bootstrap Image Preview" src="<%=@movie.image_url %>" class="img-thumbnail" />
+
+        </div>
+        <div class="col-md-7">
+
+            <h1 font size="70px" class="text-left ">
+				<b><i><%=@movie.title %><i></b>
+			</h1>
+
+            <h5 class="text-left ">
+				<b>Genre: (<%=@movie.genre%>)</b>
+			</h5>
+
+            <h2 class="text-left ">
+				<b><i>Plot:</i></b>
+			</h2>
+
+            <h3 class="text-left ">
+				<b><small><%=@movie.plot%></small></b>
+			</h3>
+
+            <h2 class="text-left ">
+				<b><i>Cast::</i></b>
+			</h2>
+
+            <h3 class="text-left ">
+				<b><small><%=@movie.cast%></small></b>
+			</h3>
+
+        </div>
+    </div>
+</div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="">
+        <div class="panel panel-primary" style="margin-bottom: 0px;">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">
+						Top 10 Movies
+					</h3>
+            </div>
+
+            <div class="panel-body table-responsive">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Genre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%count=0%>
+                            <%@all_movie.each do |all|%>
+                                <tr>
+                                    <%count =count+1%>
+                                        <td>
+                                            <%=count%>
+                                        </td>
+                                        <td>
+                                            <a href="<%= movie_path(all.id)%>">
+                                                <%=all.title%>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <%=all.genre%>
+                                        </td>
+
+                                </tr>
+                                <%end%>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+<div   style="background-color: #bfbfbf" class="container">
+  
+    <div class="row">
+        
+        <div class="col-md-6">
+            <h2 class="text-primary"><i>Give Us Your Worthy Review</i></h2>
+            <div style="margin-top: 50px; margin-left: 10px" class="row">
+                <%if user_signed_in? %>
+                <%current_user%>
+                <div class="col-md-3">
+                    <img alt="Bootstrap Image Preview" src="<%=current_user.uimage_url%>" , class="img-thumbnail" , style="height: 115px;width: 120px;" />
+                </div>
+                <%end%>
+
+               <%=form_for ([@movie, @movie.reviews.build])  do |f|%>
+                    <div class="col-md-8"  >
+                        <%=f.text_area  :Review, cols: 30, rows: 5%>
+                    </div>
+            </div>
+            
+                    <div class="form-group">
+                        <p style="margin-left: 340px">
+                            <%=f.submit  :Done  , class: "btn btn-primary"%>
+                        </p>
+                    </div>
+                <%end%>
+        </div>
+
+       
+
+ 
+
+
+
+
+
+
+        <% @movies = movies_set?(@movies) %>
+
+            <div class="col-md-6">
+                    <h1 style="text-align: center"><b>Reviews</b></h1>
+                    <hr>
+                        <% if @movies.present? %>
+                            <% @movies.last(3).each do |rev| %>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img alt="Bootstrap Image Preview" src="<%=rev.user.uimage_url%>" , class="img-thumbnail" , style="height: 80px;width: 100px;" />
+
+                                    </div>
+                                
+                                    <div class="col-md-4">
+                                        <h3><b><%= rev.user.name %></b></h3>
+                                        <h4><i><%= rev.Review %></i></h4>
+                                        <hr>
+                                    </div>
+
+                                </div>
+
+                            <% end %>
+                        <%end%>
+            </div>
+    </div>
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+    <div class="row">
+        <div class="">
+             <a style ="float:right"    id="modal-681652" href="#modal-container-681652" role="button" class="btn" data-toggle="modal">All Reviews</a>
+            
+            <div class="modal fade" id="modal-container-681652" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                             
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                ×
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                All Reviews
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                                                            
+                        
+                                            <h1 style="text-align: center"><b>Reviews</b></h1>
+                                            <hr>
+                            <div>
+
+                                <% if @movies.present? %>
+
+                        <% @movies.each do |rev| %>
+
+                            <div class="row">
+
+                                <div class="col-md-2">
+                                    <img alt="Bootstrap Image Preview" src="<%=rev.user.uimage_url%>" , class="img-thumbnail" , style="height: 80px;width: 100px;" />
+
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>
+                           <b><%= rev.user.name %></b>
+                         </h3>
+
+                                    <h4>
+                           <i><%= rev.Review %></i>
+                       </h4>
+                                    <hr>
+                                </div>
+
+                            </div>
+
+                            <% end %>
+                                <%end%>
+
+                
+
+
+
+
+                        </div>
+                        
+                        <div class="modal-footer">
+                             
+                            
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button> 
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+   </div>
+
+
+
+

@@ -1,28 +1,188 @@
+<% if @searched_movies.blank? %>
+
+
+
+
+			<%
+ first = @rating.first
+ if @rating.second.present?
+   second = @rating.second
+ else
+   second = @rating.last
+ end
+ 
+ if @rating.third.present?
+   third = @rating.third
+ else
+   third = @rating.last
+ end
+   fourth = @rating.last
+ %>
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="carousel slide" id="carousel-753231">
+			<div class="carousel slide" id="carousel-447468">
 				<ol class="carousel-indicators">
-					<li class="active" data-slide-to="0" data-target="#carousel-753231">
+					<li data-slide-to="0" data-target="#carousel-447468">
 					</li>
-					<li data-slide-to="1" data-target="#carousel-753231">
+					<li data-slide-to="1" data-target="#carousel-447468" class="active">
 					</li>
-					<li data-slide-to="2" data-target="#carousel-753231">
+					<li data-slide-to="2" data-target="#carousel-447468">
 					</li>
 				</ol>
 				<div class="carousel-inner">
+					<div  class="item">
+					 <a href="<%= movie_path(first)%>">
+						<img style="margin:0 auto ; height:500px; width:500px" alt="Carousel Bootstrap First" src="<%= first.image_url %>" class="img-thumbnail"  />
+					</a>
+					</div>
 					<div class="item active">
-						<img alt="Carousel Bootstrap First" src="http://lorempixel.com/output/sports-q-c-1600-500-1.jpg", class="slider-custom" />
-						
-						</div>
+						 <a href="<%= movie_path(second)%>">
+						<img style="margin:0 auto ; height:500px; width:500px" alt="Carousel Bootstrap Second" src="<%= second.image_url %>" class="img-thumbnail" />
+						</a>
+					</div>
+					
 					<div class="item">
-						<img alt="Carousel Bootstrap Second" src="http://lorempixel.com/output/sports-q-c-1600-500-2.jpg" ,  class="slider-custom"/>
-											</div>
+						 <a href="<%= movie_path(third)%>">
+						<img style="margin:0 auto ; height:500px; width:500px" alt="Carousel Bootstrap Third" src="<%= third.image_url %>" class="img-thumbnail" />
+				   		</a>
+				   </div>
+					
 					<div class="item">
-						<img alt="Carousel Bootstrap Third" src="http://lorempixel.com/output/sports-q-c-1600-500-3.jpg" ,  class="slider-custom" />
-						</div>
-				</div> <a class="left carousel-control" href="#carousel-753231" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-753231" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+							 <a href="<%= movie_path(fourth)%>">
+						<img style="margin:0 auto ; height:500px; width:500px" alt="Carousel Bootstrap Th" src="<%= fourth.image_url %>" class="img-thumbnail" />
+				   		</a>
+				   </div>
+								
+
+				</div> 
+
+				<a class="left carousel-control" href="#carousel-447468" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-447468" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
 		</div>
 	</div>
+	
+
+	
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-left text-info">
+				Top Viewed
+			</h3>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="row">
+			<div class="">
+				
+				<%@view_order[0..3].each do |view|%>
+				<%@top_views= Movie.find_by(id: view.movie_id)%>
+					<div class="col-md-3">
+						<a href="<%= movie_path(@top_views)%>">
+						<img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%= @top_views.image_url %>" class="img-thumbnail"/>
+						</a>
+        				<h3 class="text-primary  text-left" >
+						<%=@top_views.title%>
+						</h3>
+		   			</div>
+				<%end%>		
+        			
+			</div>
+	</div>
+
+
+	
+	<div class="row">
+		<div class="col-md-12">
+			
+			<h4 class="text-right text-danger">
+				<a href="<%= movies_detail_path(view: "view") %>">
+			
+				Browse More
+				</a>
+			</h4>
+		
+		</div>
+	</div>
+
+
+
+<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-left text-info">
+				Top Rated
+			</h3>
+		</div>
+	</div>
+
+
+
+<div class="row">
+	<div class="">
+		<%@rating[0..3].each do |rat|%>
+		  <div class="col-md-3">
+			  <a href="<%= movie_path(rat)%>">
+			    <img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%= rat.image_url %>" class="img-thumbnail"/>
+			  </a>
+      	<h3 class="text-primary  text-left" >
+				<%=rat.title%>
+				</h3>
+      </div>
+    <%end%>		
+  </div>
 </div>
+
+<div class="row">
+		<div class="col-md-12">
+			<h4 class="text-right text-danger">
+				<a href="<%= movies_detail_path(view: "rating") %>">
+				Browse More
+				</a>
+			</h4>
+		</div>
+	</div>
+
+
+
+
+
+		
+
+
+
+<% else %>
+
+<div id ="search1"  style = "display : block" >
+	<div class ="container">
+		<div class="row">
+			<div class="">
+				<%@searched_movies.each do |view|%>
+					<div class="col-md-3">
+						<a href="<%= movie_path(view)%>">
+						<img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%=view.image_url %>" class="img-thumbnail"/>
+						</a>
+        				<h3 class="text-primary  text-left" >
+						<%=view.title%>
+						</h3>
+		   			</div>
+				<%end%>		
+        	</div>
+        </div>
+    
+
+<% end %>
+
+
+
+
+
+

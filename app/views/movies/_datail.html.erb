@@ -1,0 +1,12 @@
+<div class="">
+  <% movie.each do |data| %>
+    <div class="col-md-3">
+      <a href="<%= movie_path(data)%>">
+      <img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%= data.try(:image_url) %>" class="img-thumbnail"/>
+      </a>
+          <h3 class="text-primary  text-left" >
+      <%= data.title%>
+      </h3>
+      </div>
+  <%end%>   
+</div>

@@ -1,0 +1,68 @@
+def detail 
+		if params[:data_movie] =="rating"
+      @movies =Movie.order('rating desc')
+    elsif params[:data_movie] == "top view"
+      
+      movie_ids = View.all.collect(&:movie_id)
+      @movies = Movie.where(id: movie_ids)
+    else
+      @movies =Movie.order('rating desc')
+    end 	 
+  
+
+    # respond_to do |format|
+    #   format.js 
+    # end
+	end
+
+
+
+
+
+
+
+
+
+  <div class="row">
+    <div class="">
+      <button style= "font-size: 20px"; type="button" class="btn btn-primary" onclick="view_rate('top view')">
+        Top Viewed
+      </button>
+    
+      <button style= "font-size: 20px"; type="button" class="btn btn-success" onclick="view_rate('rating')">
+        Top Rated
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class ="container">
+  <div class="row data-filter">
+  <%= render partial: "movies/datail", locals: { movie: @movies } %>
+    </div>
+
+</div>
+</div><script type="text/javascript">
+
+function view_rate(type_value){
+  $.ajax({
+  type: "GET",
+  url: "#{movies_detail_path}",
+  dataType: "script",
+  data: {data_movie: type_value },  
+  
+  success: function(data){
+    alert(data);
+    $(".data-filter").html(  <%= render partial: "movies/datail", locals: { movie: @movies } %> )
+  }
+  });
+}
+
+</script>

@@ -1,3 +1,49 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.panel1 {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+}
+
+
+.comment-show{
+    float: right;
+  }
+ .table-responsive {
+     max-height:300px;
+ }
+ .panel-heading{
+   background-color: black !important;
+   color: white !important;
+ }
+ .panel-body{
+   background-color: black !important;
+   color: white !important;
+ }
+ .web-show{
+   float: right;
+ }
+ .title-show{
+   max-height: 450px;
+ }
+ .header-setting{
+   color: gold;
+   padding-top: 30px;
+   margin-left: 40px;
+ }
+ .page-header {
+   padding-bottom: 26px !important;
+   margin: 0px !important;
+   border-bottom: 1px solid #eeeeee !important;
+   background-color: black !important;
+ }
+ .header-nav{
+   background-color: black;
+ }
