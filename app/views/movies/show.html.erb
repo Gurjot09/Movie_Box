@@ -92,29 +92,55 @@
         
         <div class="col-md-6">
             <h2 class="text-primary"><i>Give Us Your Worthy Review</i></h2>
-            <div style="margin-top: 50px; margin-left: 10px" class="row">
-                <%if user_signed_in? %>
-                <%current_user%>
-                <div class="col-md-3">
-                    <img alt="Bootstrap Image Preview" src="<%=current_user.uimage_url%>" , class="img-thumbnail" , style="height: 115px;width: 120px;" />
-                </div>
-                <%end%>
+                <div style="margin-top: 50px; margin-left: 10px" class="row">
+                    <%if user_signed_in? %>
+                    <%current_user%>
+                        <div class="col-md-3">
+                            <img alt="Bootstrap Image Preview" src="<%=current_user.uimage_url%>" , class="img-thumbnail" , style="height: 115px;width: 120px;" />
+                        </div>
+                    <%end%>
+                        <%if user_signed_in? %>
+                            <%=form_for ([@movie, @movie.reviews.build])  do |f|%>
+                                <div class="col-md-8"  >
+                                    <%=f.text_area  :Review, cols: 30, rows: 5%>
+                                </div>
+                
+                                     
+                                    <div class="form-group">
+                                        <p style="margin-left: 340px">
+                                            <%=f.submit  :Done  , class: "btn btn-primary"%>
+                                        </p>
+                                    </div>
+                            
+                            <%end%>
 
-               <%=form_for ([@movie, @movie.reviews.build])  do |f|%>
-                    <div class="col-md-8"  >
-                        <%=f.text_area  :Review, cols: 30, rows: 5%>
-                    </div>
-            </div>
+                            <%else%>
+                                <div class="col-md-3">
+                            <img alt="No User Signed In" src="" , class="img-thumbnail" , style="height: 125px;width: 120px;" />
+                        </div>
+
+                            <div class="col-md-8"  >
+                                 <textarea rows="6" cols="30">
+                                 </textarea>
+                                </div>
+                
+
+
+                                <div style="margin-left: 380px" class="form-group">
+                                    <p >
+                                        <%= button_to "Done", new_user_session_path %>
+                                    </p>
+                                </div>
             
-                    <div class="form-group">
-                        <p style="margin-left: 340px">
-                            <%=f.submit  :Done  , class: "btn btn-primary"%>
-                        </p>
-                    </div>
-                <%end%>
-        </div>
-
+                                
+                        <%end%>
+        
+                         
        
+                </div>
+        
+       
+       </div>
 
  
 
