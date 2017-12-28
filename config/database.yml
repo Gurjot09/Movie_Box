@@ -6,6 +6,12 @@ default: &default
   username: root
   password:
 
+
+default: &default2
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  
 development:
   <<: *default
   database: moviebox_development
@@ -37,7 +43,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  <<: *default2
   database: moviebox_production
   username: moviebox
   password: <%= ENV['MOVIE-STORE_DATABASE_PASSWORD'] %>
