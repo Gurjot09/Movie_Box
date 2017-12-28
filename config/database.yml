@@ -11,7 +11,7 @@ default: &default2
   adapter: postgresql
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  
+  host: marohost
 development:
   <<: *default
   database: moviebox_development
