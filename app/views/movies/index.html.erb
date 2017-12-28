@@ -166,6 +166,7 @@
 		<div class="row">
 			<div class="">
 				<%@searched_movies.each do |view|%>
+					
 					<div class="col-md-3">
 						<a href="<%= movie_path(view)%>">
 						<img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%=view.image_url %>" class="img-thumbnail"/>

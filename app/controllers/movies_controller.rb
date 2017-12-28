@@ -80,6 +80,7 @@ class MoviesController < ApplicationController
 		
 		View.where(movie_id: @movie.id).update(count: inc_count)	    
 	    
+	   
 	end
 
 

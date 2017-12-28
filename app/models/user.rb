@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
          after_create :send_email
 
+       
+
         def send_email
          	UserMailer.signup_confirmation(self).deliver_now
       	end 
