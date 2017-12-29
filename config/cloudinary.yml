@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: moviebox
+  api_key: '684895413943757'
+  api_secret: OckawubrD_jWy6yhj2XYXGHU2S0
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: moviebox
+  api_key: '684895413943757'
+  api_secret: OckawubrD_jWy6yhj2XYXGHU2S0
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: moviebox
+  api_key: '684895413943757'
+  api_secret: OckawubrD_jWy6yhj2XYXGHU2S0
+  enhance_image_tag: true
+  static_image_support: false
