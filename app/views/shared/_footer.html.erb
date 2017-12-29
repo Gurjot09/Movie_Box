@@ -1,0 +1,35 @@
+<footer id="myFooter" style="background-color:   black">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2 class="logo"><a href="<%= root_path%>"> Movie Store </a></h2>
+            </div>
+            <div class="col-sm-4">
+                <h5>Get started</h5>
+                <ul>
+                    <li><a href="<%= root_path%>">Home</a></li>
+                    <% if user_signed_in? %>
+                    <li><%= link_to "SignOut",destroy_user_session_path,method: :delete%></li>
+                    <%else%>
+                    <li><a href="<%= new_user_registration_path%>">Sign up</a></li>
+                    <%end%>
+                    <li><a href="#">Downloads</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="social-networks">
+                    <a href="https://www.facebook.com/niri4" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="https://plus.google.com/116609894960334238811" class="google" target="_blank"><i class="fa fa-google-plus"></i></a>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>© 2017 Movie Store </p>
+    </div>
+</footer>
+
+
+  </body>

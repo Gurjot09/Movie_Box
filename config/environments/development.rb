@@ -36,13 +36,13 @@ Rails.application.configure do
       port: 587,
       domain: 'gmail.com',
       authentication: 'plain',
-      user_name: 'gurjotwalia21@gmail.com',
-      password: 'maropost2017'
+      user_name: Rails.application.secrets.email,
+      password: Rails.application.secrets.password
     
     }
 
   config.action_mailer.perform_caching = false
-    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+    config.action_mailer.default_url_options = { host: 'marohost', port: 3000 }
 
 
   # Print deprecation notices to the Rails logger.

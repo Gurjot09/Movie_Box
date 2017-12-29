@@ -5,7 +5,7 @@ class CreateMovies < ActiveRecord::Migration[5.1]
       t.string :genre
       t.string :plot
       t.string :image
-      t.string :rating
+      t.float :rating
       t.string :web
 
       t.timestamps
