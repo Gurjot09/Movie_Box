@@ -38,7 +38,7 @@ class MoviesController < ApplicationController
 				@call=OtherServiceCall.new.api_call(params[:movie123][:title])
 				
 				if @call== true
-					   redirect_to "http://marohost:3000/admin/movies",notice: "movie Successfully Saved"
+					   redirect_to "https://moviegbox.herokuapp.com/admin/movies",notice: "movie Successfully Saved"
       			else
         			   redirect_to new_admin_movie_path(view: params[:view]),alert: "Movie Not Found Please verify it."
       			end
