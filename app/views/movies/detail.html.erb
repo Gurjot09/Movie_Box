@@ -1,19 +1,20 @@
 <%=render "shared/header"%>
 
-<div class = "container">
+
+<div  class = "container" >
 	<div class="row">
 		<div class="col-md-12">
-			<h3 class="text-left text-info">
+			<h2 class="text-left text-info" style="   padding-left: 1px; margin-left: 18px;">
 				Movie Details::
 
-			</h3>
+			</h2>
 		</div>
 	</div>
 
 
-<div class="container">
+<div class="container" style="    margin-left: 18px;padding-left: 1px;">
 	<div class="row">
-		<div class="">
+		<div class="" >
 		
       <button style= "font-size: 20px"; type="button" class="btn btn-primary  viewed   " >
 			
@@ -34,7 +35,11 @@
 <% style = "display:none;"%>
 <% end %>
 
-<div class ="container">
+<div class ="container" style="
+    margin-left: 0px;
+    width: 1155px;
+    padding-left: 3px;
+">
 	<div id= views ;  style =<%= style %> >
 		<div class="row">
 			<div class="">
@@ -81,16 +86,22 @@
 </div>
 
 
-<div id ="search1"  style = "display : block" >
-
-<% if @searched_movies.blank? %>
-		<h1><b>Sorry, Searched Movie is not Present</b></h1>
-
+<%if  @toss=="view" || @toss=="rating" %> 
+<% style = "display:none;"%>
 <% else %>
+<% style = "display:block;"%>
+<% end %>
+
+
+<div id ="search1"  style = <%= style %> >
+
+<% if !@searched_movies.present?%>
+<h1><b>Sorry, Searched Movie is not Present</b></h1><%else%>
+
+	
 	<div class ="container">
 		<div class="row">
 			<div class="">
-			
 				<%@searched_movies.each do |view|%>
 					<div class="col-md-3">
 						<a href="<%= movie_path(view)%>">
@@ -101,15 +112,14 @@
 						</h3>
 		   			</div>
 				<%end%>		
-        	
         	</div>
         </div>
     </div>
 </div>
-
-
-<% end %>
+<%end%>
 </div>
+
+
 <%=render "shared/footer"%>
 
 <!--script type="text/javascript">

@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
 
 
 	def detail
-		
+		@toss=params[:view]	
 		if params[:search].present?
 			
        capital_search = params[:search].capitalize
@@ -12,9 +12,16 @@ class MoviesController < ApplicationController
        	
        @searched_movies = Movie.where("title like? OR title like? OR title like? OR title like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").order('rating ASC')
 			# @searched_movies =  Movie.where(['title like ?', "%"+params[:search]+"%"])
+		
+	
+		
+@rating=Movie.order('rating desc') 
+		   @view_order=View.order('count desc')	
 			
 		else
-
+			@rating=Movie.order('rating desc') 
+		   @view_order=View.order('count desc')	
+	
 		end
 		
 		
