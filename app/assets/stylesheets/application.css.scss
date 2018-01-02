@@ -28,5 +28,14 @@ a#modal-681652 {
 }
 footer#myFooter {
     float: left;
+    width: 100%;
 }
 
+@media only screen and (max-width: 500px) {
+
+/*.asd img {
+    width: 100% !important;
+    height: 660px !important;
+}*/
+   
+}
