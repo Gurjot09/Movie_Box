@@ -81,14 +81,16 @@
 </div>
 
 
+<div id ="search1"  style = "display : block" >
 
 <% if @searched_movies.blank? %>
+		<h1><b>Sorry, Searched Movie is not Present</b></h1>
 
 <% else %>
-<div id ="search1"  style = "display : block" >
 	<div class ="container">
 		<div class="row">
 			<div class="">
+			
 				<%@searched_movies.each do |view|%>
 					<div class="col-md-3">
 						<a href="<%= movie_path(view)%>">
@@ -99,6 +101,7 @@
 						</h3>
 		   			</div>
 				<%end%>		
+        	
         	</div>
         </div>
     </div>
@@ -106,7 +109,7 @@
 
 
 <% end %>
-
+</div>
 <%=render "shared/footer"%>
 
 <!--script type="text/javascript">

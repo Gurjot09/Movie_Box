@@ -1,10 +1,9 @@
 
 <div style="box-sizing: border-box;">
 
-
 <%=render "shared/header"%>
-<% if @searched_movies.blank? %>
 
+<% if !params[:search].present? %>
 
 
 
@@ -36,6 +35,9 @@
 					</li>
 					<li data-slide-to="2" data-target="#carousel-447468">
 					</li>
+					<li data-slide-to="3" data-target="#carousel-447468">
+					</li>
+				
 				</ol>
 				<div class="carousel-inner">
 					<div  class="item">
@@ -170,7 +172,14 @@
 	<div class ="container">
 		<div class="row">
 			<div class="">
-				<%@searched_movies.each do |view|%>
+				
+				<%if @searched_movies.blank?%>
+
+				<h1><b>Sorry, Searched Movie is not Present</b></h1>
+				<%else%>
+        				
+					<%@searched_movies.each do |view|%>
+
 					
 					<div class="col-md-3">
 						<a href="<%= movie_path(view)%>">
@@ -181,6 +190,11 @@
 						</h3>
 		   			</div>
 				<%end%>		
+        		
+
+
+
+        				<%end%>
         	</div>
         </div>
     
