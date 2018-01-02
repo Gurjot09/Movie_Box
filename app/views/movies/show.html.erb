@@ -98,7 +98,7 @@
                     <%if user_signed_in? %>
                     <%current_user%>
                         <div class="col-md-3">
-                            <img alt="Bootstrap Image Preview" src="<%=current_user.uimage_url%>" , class="img-thumbnail" , style="height: 115px;width: 120px;" />
+                           <img alt="Bootstrap Image Preview" src="<%=current_user.uimage_url%>" , class="img-thumbnail" , style="height: 115px;width: 120px;" />
                         </div>
                     <%end%>
                         <%if user_signed_in? %>
@@ -118,6 +118,8 @@
 
                             <%else%>
                                 <div class="col-md-3">
+                            
+
                             <img alt="No User Signed In" src="" , class="img-thumbnail" , style="height: 125px;width: 120px;" />
                         </div>
 

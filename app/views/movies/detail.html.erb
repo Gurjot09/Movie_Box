@@ -42,7 +42,7 @@
 				<%@top_views= Movie.find_by(id: view.movie_id)%>
 					<div class="col-md-3">
 						<a href="<%= movie_path(@top_views)%>">
-						<img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%= @top_views.image_url %>" class="img-thumbnail"/>
+						<img style="height:100%; width:100%" alt="Bootstrap Image Preview" src="<%= @top_views.image_url %>" class="img-thumbnail"/>
 						</a>
         				<h3 class="text-primary  text-left" >
 						<%=@top_views.title%>
@@ -68,7 +68,7 @@
 				<%@rating.each do |view|%>
 					<div class="col-md-3">
 						<a href="<%= movie_path(view)%>">
-						<img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%=view.image_url %>" class="img-thumbnail"/>
+						<img style="height:100%; width:100%" alt="Bootstrap Image Preview" src="<%=view.image_url %>" class="img-thumbnail"/>
 						</a>
         				<h3 class="text-primary  text-left" >
 						<%=view.title%>
@@ -92,7 +92,7 @@
 				<%@searched_movies.each do |view|%>
 					<div class="col-md-3">
 						<a href="<%= movie_path(view)%>">
-						<img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%=view.image_url %>" class="img-thumbnail"/>
+						<img style="height:100%; width:100%" alt="Bootstrap Image Preview" src="<%=view.image_url %>" class="img-thumbnail"/>
 						</a>
         				<h3 class="text-primary  text-left" >
 						<%=view.title%>
