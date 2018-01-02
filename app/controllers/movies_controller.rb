@@ -3,7 +3,13 @@ class MoviesController < ApplicationController
 
 	def detail
 		if params[:search].present?
-			@searched_movies =  Movie.where(['title like ?', "%"+params[:search]+"%"])
+			
+       capital_search = params[:search].capitalize
+       downcase_search = params[:search].downcase
+       upcase_search = params[:search].upcase
+       title_search = params[:search].titleize
+       @searched_movies = Movie.where("title like? OR title like? OR title like? OR title like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").order('rating ASC')
+			# @searched_movies =  Movie.where(['title like ?', "%"+params[:search]+"%"])
 			
 		else
 		end
@@ -15,8 +21,14 @@ class MoviesController < ApplicationController
 
 	def index
 		if params[:search].present?
+			 capital_search = params[:search].capitalize
+       downcase_search = params[:search].downcase
+       upcase_search = params[:search].upcase
+       title_search = params[:search].titleize
 			
-			@searched_movies=  Movie.where(['title like ?', "%"+params[:search]+"%"])
+			@searched_movies = Movie.where("title like? OR title like? OR title like? OR title like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").order('rating ASC')
+	
+			# @searched_movies=  Movie.where(['title like ?', "%"+params[:search]+"%"])
 			
 		else
 
