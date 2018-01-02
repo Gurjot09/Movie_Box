@@ -1,9 +1,10 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="container" style="padding-left: 165px;padding-right: 135px;width: 700px; border-style: outset ;margin-top:70px; background-color: #ff00008f    border-width: 10px; background-color: #e7e7e7">
             <div class="col-md-12">
                <form role="form">
-                  <h2>Log In</h2>
+                  <h2 style="text-align: center;">Log In</h2>
+                  <hr style=" border-style: inset;border-width: 1px;">
                   <div class="form-group">
 
                         <label for="exampleInputEmail1">
@@ -24,14 +25,17 @@
                      </div>
 
                     <div class="actions">
-                        <%= f.submit "Log in" %>
+                        <%= f.submit "Log in" %><br>
+            <br>
+
                     </div>
                </form>     
             </div>
+                      <%= render "devise/shared/links" %>
          </div>
       
 <% end %>
 
                         
 
-   <%= render "devise/shared/links" %>
+  
