@@ -1,5 +1,7 @@
 <%=render "shared/header"%>
 
+<%if params[:search].blank?%>
+
 <div  class="container" >
     <div style=" background-color: #fafafa ; margin-left: -30px;" class="row">
         <div class="col-md-5">
@@ -277,5 +279,39 @@
 
 
 
+<%else%>
+
+
+        <div id ="search1"  style = "display : block" >
+    <div class ="container">
+        <div class="row">
+            <div class="">
+                
+                <%if @searched_movies.blank?%>
+
+                <h1 style="margin-left: 17px;"><b>Sorry, Searched Movie is not Present</b></h1>
+                <%else%>
+                        
+                    <%@searched_movies.each do |view|%>
+
+                    
+                    <div class="col-md-3">
+                        <a href="<%= movie_path(view)%>">
+                        <img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%=view.image_url %>" class="img-thumbnail"/>
+                        </a>
+                        <h3 class="text-primary  text-left" >
+                        <%=view.title%>
+                        </h3>
+                    </div>
+                <%end%>     
+                
+
+
+
+                        <%end%>
+            </div>
+        </div>
+
+<%end%>
 
 <%=render "shared/footer"%>

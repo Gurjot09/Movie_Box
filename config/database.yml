@@ -12,6 +12,8 @@ default: &default2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: marohost
+
+
 development:
   <<: *default
   database: moviebox_development

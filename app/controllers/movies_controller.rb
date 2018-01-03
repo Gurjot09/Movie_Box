@@ -93,7 +93,27 @@ class MoviesController < ApplicationController
 
 
 	def show
-		@movie=Movie.find(params[:id])
+			if params[:search].present?
+			
+       capital_search = params[:search].capitalize
+       downcase_search = params[:search].downcase
+       upcase_search = params[:search].upcase
+       title_search = params[:search].titleize
+      
+       @searched_movies = Movie.where("title like? OR title like? OR title like? OR title like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").order('rating ASC')
+			# @searched_movies =  Movie.where(['title like ?', "%"+params[:search]+"%"])
+		
+	
+		
+			
+		else
+					    
+	    
+	   
+		end
+
+				
+@movie=Movie.find(params[:id])
 		@movies = @movie.reviews
 		@get_genre=@movie.genre	   
 	    @all_movie=Movie.where(genre: @get_genre).order('rating desc')
@@ -104,7 +124,8 @@ class MoviesController < ApplicationController
 		
 		View.where(movie_id: @movie.id).update(count: inc_count)	    
 	    
-	   
+	   		
+		
 	end
 
 
