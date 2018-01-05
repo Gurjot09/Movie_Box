@@ -9,17 +9,20 @@
   </head>
 
   <body>
+<div style="background-color: " class= container-fluid>
     <div class = "container">
             <% flash.each do |name, msg| %>
            <%= content_tag(:div, msg, class: "alert alert-info") %>
            <% end %>
-      
+
      <!--  <p class="notice"><%= notice %></p -->
-      
+
 </div>
-    
-        
+
+
 
     <%= yield %>
+
+</div>
     </body>
 </html>

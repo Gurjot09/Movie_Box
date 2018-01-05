@@ -3,9 +3,9 @@
 <%if params[:search].blank?%>
 
 <div  class="container" >
-    <div style=" background-color: #fafafa ; margin-left: -30px;" class="row">
+    <div style=" background-color: #fafafa ; margin-left: -12px;" class="row">
         <div class="col-md-5">
-            <img style="margin:0 auto ; height:400px; width:500px" alt="Bootstrap Image Preview" src="<%=@movie.image_url %>" class="img-thumbnail" />
+            <img style="margin-left: -17px ; height:400px; width:500px" alt="Bootstrap Image Preview" src="<%=@movie.image_url %>" class="img-thumbnail" />
 
         </div>
         <div class="col-md-7">
@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-    
+
     <div class="container">
         <div class="row">
             <div class="">
@@ -91,9 +91,9 @@
 
 
 <div   style="background-color: #efefef" class="container">
-  
+
     <div class="row">
-        
+
         <div class="col-md-6">
             <h2 class="text-primary"><i>Give Us Your Worthy Review</i></h2>
                 <div style="margin-top: 50px; margin-left: 10px" class="row">
@@ -108,49 +108,46 @@
                                 <div class="col-md-8"  >
                                     <%=f.text_area  :Review, cols: 30, rows: 5%>
                                 </div>
-                
-                                     
+
+
                                     <div class="form-group">
                                         <p style="margin-left: 340px">
                                             <%=f.submit  :Done  , class: "btn btn-primary"%>
                                         </p>
                                     </div>
-                            
+
                             <%end%>
 
                             <%else%>
                                 <div class="col-md-3">
-                            
+
 
                             <img alt="No User Signed In" src="http://wfarm2.dataknet.com/static/resources/icons/set108/b5cdab07.png" , class="img-thumbnail" , style="height: 125px;width: 120px;" />
                         </div>
 
                             <div class="col-md-8"  >
-                                 <textarea rows="6" cols="30">
-                                 </textarea>
+                                 <textarea rows="6" cols="30"></textarea>
                                 </div>
-                
+
 
 
                                 <div style="margin-left: 380px" class="form-group">
-                                    <p >
-                                    
-                                        <%= button_to "Done", new_user_session_path ,alert: "You Need To Log In First"%>
-
+                                    <p>
+                                    <a href=<%=new_user_session_path%>><button> Done</button></a>
                                     </p>
                                 </div>
-            
-                                
+
+
                         <%end%>
-        
-                         
-       
+
+
+
                 </div>
-        
-       
+
+
        </div>
 
- 
+
 
 
 
@@ -160,10 +157,10 @@
         <% @movies = movies_set?(@movies) %>
 
             <div style="  background-color: #cccccc"  class="col-md-6">
-                  
-                  
+
+
                         <% if @movies.present? %>
-                           
+
                               <h1 style="text-align: center"><b>Reviews</b></h1>
                             <hr>
                             <% @movies.last(3).each do |rev| %>
@@ -172,7 +169,7 @@
                                         <img alt="Bootstrap Image Preview" src="<%=rev.user.uimage_url%>" , class="img-thumbnail" , style="height: 80px;width: 100px;" />
 
                                     </div>
-                                
+
                                     <div class="col-md-4">
                                         <h3><b><%= rev.user.name %></b></h3>
                                         <h4><i><%= rev.Review %></i></h4>
@@ -193,7 +190,6 @@
 
 
 
-    
 
 
 
@@ -203,16 +199,17 @@
 
 
 
-    
+
+
     <div class="row">
         <div class="">
              <a style ="float:right"    id="modal-681652" href="#modal-container-681652" role="button" class="btn" data-toggle="modal">All Reviews</a>
-            
+
             <div class="modal fade" id="modal-container-681652" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             
+
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                 ×
                             </button>
@@ -221,8 +218,8 @@
                             </h4>
                         </div>
                         <div class="modal-body">
-                                                            
-                        
+
+
                                             <h1 style="text-align: center"><b>Reviews</b></h1>
                                             <hr>
                             <div>
@@ -253,27 +250,27 @@
                             <% end %>
                                 <%end%>
 
-                
+
 
 
 
 
                         </div>
-                        
+
                         <div class="modal-footer">
-                             
-                            
+
+
                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                 Close
-                            </button> 
-                            
+                            </button>
+
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
-            
+
         </div>
    </div>
 
@@ -286,15 +283,15 @@
     <div class ="container">
         <div class="row">
             <div class="">
-                
+
                 <%if @searched_movies.blank?%>
 
                 <h1 style="margin-left: 17px;"><b>Sorry, Searched Movie is not Present</b></h1>
                 <%else%>
-                        
+
                     <%@searched_movies.each do |view|%>
 
-                    
+
                     <div class="col-md-3">
                         <a href="<%= movie_path(view)%>">
                         <img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%=view.image_url %>" class="img-thumbnail"/>
@@ -303,8 +300,8 @@
                         <%=view.title%>
                         </h3>
                     </div>
-                <%end%>     
-                
+                <%end%>
+
 
 
 
