@@ -18,4 +18,20 @@ class User < ApplicationRecord
          	UserMailer.signup_confirmation(self).deliver_now
       	end 
 
+       
+
+
+
+
+
+
+
+
+
+        # def send_weekly_mails
+        #   @user=User.all
+
+        #   UserMailer.weekly_mails(@user).deliver_later(wait_until: 10.hours.from_now)
+        # end 
+
 end

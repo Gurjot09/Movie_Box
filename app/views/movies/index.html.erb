@@ -200,6 +200,10 @@
     
 
 <% end %>
+<div>
+	<h3><u>Top 10 highest rating movies </u></h3>
+</div>
+<canvas id="bar-chart" width="900" height="350"></canvas>
 
 
 <%=render "shared/footer"%>
@@ -208,3 +212,42 @@
 
 
 </div>
+
+<%titles=Array.new%>
+<%rating=Array.new%>
+<%@rating1=Movie.all%>
+<%@rating1[0..9].each do |movie|%>
+	<%titles.push(movie.title)%>
+	<%rating.push(movie.rating)%>
+<%end%>
+
+<script>
+
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: <%=titles.inspect.html_safe%>,
+      datasets: [
+        {
+          label: "Rating (1-10)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850" ,"#c45851" ,"#c42350","#3e95cd"],
+          data: <%=rating.inspect.html_safe%>
+        }
+      ]
+    },
+    options: {
+
+    		scales: {
+            		yAxes: [{
+                			ticks: {
+                    				beginAtZero:true
+                					}
+            				}]
+        			}
+     
+    }
+
+ });
+
+
+</script>

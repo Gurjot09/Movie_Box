@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
 		
 	
 		
-@rating=Movie.order('rating desc') 
+			@rating=Movie.order('rating desc') 
 		   @view_order=View.order('count desc')	
 			
 		else
@@ -47,6 +47,7 @@ class MoviesController < ApplicationController
 		@rating=Movie.order('rating desc') 
 		@view_order=View.order('count desc')	
 
+		
 	end
 
 	

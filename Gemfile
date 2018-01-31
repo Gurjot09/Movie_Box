@@ -20,6 +20,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'carrierwave'
 gem 'uglifier', '>= 1.3.0'
 gem 'devise'
+gem 'chart-js-rails'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -37,13 +39,14 @@ gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth-facebook'
+gem "figaro"
+  
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem "figaro"
   
 end
 
@@ -56,6 +59,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'mysql2'
   gem 'cloudinary'
+  gem 'whenever', :require => false
 
 end
 

@@ -10,7 +10,14 @@ class UserMailer < ApplicationMailer
   
   def signup_confirmation(user)
     @user= user
-    
+    debugger
     mail to: @user.email , subject: "MovieBox Sign Up Confirmation"
+    
+  end
+
+
+  def weekly_mails(user)
+    mail to: user.email , subject: "MovieBox Weekly Mails"
+  
   end
 end
