@@ -43,8 +43,15 @@
 	<div id= views ;  style =<%= style %> >
 		<div class="row">
 			<div class="">
+				<%view_title=Array.new%>
+				<%view_count=Array.new%>
+				
 				<%@view_order.each do |view|%>
 				<%@top_views= Movie.find_by(id: view.movie_id)%>
+					
+					<%view_title.push(@top_views.title)%>
+					<%view_count.push(view.count)%>
+
 					<div class="col-md-3">
 						<a href="<%= movie_path(@top_views)%>">
 						<img style="height:300px; width:300px" alt="Bootstrap Image Preview" src="<%= @top_views.image_url %>" class="img-thumbnail"/>
@@ -55,8 +62,11 @@
 		   			</div>
 				<%end%>		
         	</div>
+        <canvas id="doughnut-chart" width="900" height="350"></canvas>
+
         </div>
      </div>
+
 </div>
 
 
@@ -83,6 +93,8 @@
         	</div>
         </div>
     </div>
+        <canvas id="doughnut-chart1" width="900" height="350"></canvas>
+
 </div>
 
 
@@ -135,7 +147,13 @@ function myViews()
 }
 
 </script-->
-
+<%titles=Array.new%>
+<%rating=Array.new%>
+<%@rating1=Movie.all%>
+<%@rating1[0..9].each do |movie|%>
+	<%titles.push(movie.title)%>
+	<%rating.push(movie.rating)%>
+<%end%>
 <script>
 jQuery(document).ready(function(){
 
@@ -150,14 +168,49 @@ jQuery(document).ready(function(){
     	jQuery("#views").css("display","none");
  	jQuery("#search1").css("display","none");
     jQuery("#rating").css("display","block");
-    
- 
- })
-
-
-
-
+    })
 });
+
+new Chart(document.getElementById("doughnut-chart"), {
+    type: 'doughnut',
+    data: {
+      labels: <%=view_title.inspect.html_safe%>,
+      datasets: [
+        {
+          label: "Views",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95ff","#fffeee","#effeee "],
+          data: <%=view_count.inspect.html_safe%>
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Top 10 Viewed Movies'
+      }
+    }
+});
+
+new Chart(document.getElementById("doughnut-chart1"), {
+    type: 'doughnut',
+    data: {
+      labels: <%=titles.inspect.html_safe%>,
+      datasets: [
+        {
+          label: "Views",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95ff","#fffeee","#effeee "],
+          data: <%=rating.inspect.html_safe%>
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Top 10 Viewed Movies'
+      }
+    }
+});
+
 </script>
 
 
